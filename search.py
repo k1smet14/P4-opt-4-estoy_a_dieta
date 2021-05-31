@@ -14,7 +14,7 @@ def objective(trial, device):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f"device use : {device}")
     max_f1 = 0
-    epochs = 20
+    epochs = 5
     criterion = nn.CrossEntropyLoss()
     resize = trial.suggest_int("resize", 32, 224, step=4)
     train_loader, val_loader = get_loader(resize)
@@ -22,9 +22,6 @@ def objective(trial, device):
     model = Model(architecture, verbose=True).to(device)
     macs = calc_macs(model, (3, resize, resize))
 
-    if macs > 13000000:
-        print("model too large")
-        return max_f1
     optimizer_name = trial.suggest_categorical("optim", ["SGD", "Adam"])
     if optimizer_name == "SGD":
         lr = 1e-2
