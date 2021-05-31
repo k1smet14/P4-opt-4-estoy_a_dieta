@@ -10,7 +10,7 @@ from train import *
 from evalution import *
 
 
-def objective(trial, device):
+def objective(trial):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f"device use : {device}")
     max_f1 = 0
