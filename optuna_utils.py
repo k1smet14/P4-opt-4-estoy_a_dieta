@@ -38,11 +38,10 @@ def get_nc_args(trial, nc, idx):
         return [out_channel, shortcut, 1, expansion, activation]
 
     elif nc == "InvertedResidualv2":
+        c = trial.suggest_int(name + "/c", 8 * idx, 32 * idx , step=8)
+        t = trial.suggest_int(name + "/t", 1, 8)
         stride = 1
-        out_channel = trial.suggest_int(name + "/out_channel", 3, 64)
-        expand = 0.5
-        # InvertedResidualv2 :  oup, expand_ratio, stride(1,2)
-        return [out_channel, expand, stride]
+        return [c, t, stride]
 
     elif nc == "MBConv":
         out_channel = trial.suggest_int(name + "/out_channel", 3, 64)
@@ -56,15 +55,14 @@ def get_nc_args(trial, nc, idx):
 def get_rc_args(trial, rc, idx):
     name = "rc_argv" + str(idx)
     if rc == "InvertedResidualv2":
-        t = trial.suggest_int(name + "/t", 1, 6)
-        out_channel = trial.suggest_int(name + "/out_channel", 3, 64)
+        c = trial.suggest_int(name + "/c", 8 * idx, 32 * idx , step=8)
+        t = trial.suggest_int(name + "/t", 1, 8)
         stride = 2
-        return [out_channel, t, stride]
+        return [c, t, stride]
 
-    elif rc == "InvertedResidualv3":
-        t = trial.suggest_int(name + "/t", 1, 6)
+    elif rc == "InvertedResidualv3":        
+        t = round(trial.suggest_float(name + "/t", 1.0, 6.0, step=0.1), 1)
         kernel_size = trial.suggest_int(name + "/kernel_size", 3, 5, step=2)
-        out_channel = trial.suggest_int(name + "/out_channel", 3, 64)
         c = trial.suggest_categorical(name + "/c", [16, 24, 40, 80, 112, 160])
         SE = trial.suggest_int(name + "/SE", 0, 1)
         HS = trial.suggest_int(name + "/HS", 0, 1)
