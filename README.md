@@ -1,4 +1,4 @@
-# Model Customize : Pruning & decomposition
+# Model Compression : Pruning & decomposition
 
 ||MACs|F1|Competition Score|
 |------|---|---|----|
