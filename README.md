@@ -25,7 +25,7 @@ ptflops
 ```
 ## Directory
 ```
-Model Customize/
+Model Compression/
 ├──input/
 |  └── data/
 |      ├── train/
