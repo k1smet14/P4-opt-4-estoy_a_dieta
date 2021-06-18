@@ -42,6 +42,6 @@ Model Customize/
 ├──solution/
 |  ├── dataloader.py
 |  ├── ...
-|  ├── test_demo.py
 |  └── utils.py
+└──test_demo.py
 ```
