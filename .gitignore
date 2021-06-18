@@ -1,0 +1,9 @@
+*.db
+*.ini
+*.csv
+data/*
+exp/*
+wandb/*
+tests/*
+.vscode/*
+*.pt
