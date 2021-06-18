@@ -3,9 +3,6 @@ import random
 import time
 import argparse
 
-import numpy as np
-import pandas as pd
-
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -13,15 +10,13 @@ from torch.utils.data import Dataset, DataLoader
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
-import matplotlib.pyplot as plt
-from shufflenet_g3_wd4 import shufflenet_g3_wd4
-
-from dataloader import *
-from loss import *
-from scheduler import *
-from evaluate import *
-from metric import *
-from utils import *
+from solution.shufflenet import shufflenet_g3_wd4
+from solution.dataloader import *
+from solution.loss import *
+from solution.scheduler import *
+from solution.evaluate import *
+from solution.metric import *
+from solution.utils import *
 
 
 def train(params, model, train_loader, val_loader, device):
