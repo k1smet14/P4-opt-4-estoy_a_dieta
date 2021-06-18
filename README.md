@@ -39,8 +39,9 @@ Model Customize/
 ├──pretrained/
 │  ├── ShuffleNet_final.pt
 │  └── shufflenet_g3_wd4.pth
-├── dataloader.py
-├── ...
-├── test_demo.py
-└── utils.py
+├──solution/
+|  ├── dataloader.py
+|  ├── ...
+|  ├── test_demo.py
+|  └── utils.py
 ```
