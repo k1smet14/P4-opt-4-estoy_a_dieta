@@ -1,5 +1,3 @@
-# boostcamp_pstage10
-
 
 # Run
 ## 1. train
