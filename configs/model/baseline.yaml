@@ -1,0 +1,17 @@
+# baseline.yaml
+input_channel: 3
+depth_multiple: 1.0
+width_multiple: 1.0
+backbone:
+     # [repeat, module, args]
+     [
+       [1,"DWConv",[16,3,2,null,"Hardswish"]],
+       [1,"InvertedResidualv2",[24,6,2]],
+       [4,"InvertedResidualv3",[3,3.3,24,1,1,2]],
+       [4,"InvertedResidualv3",[3,2.9,48,0,0,2]],
+       [1,"DWConv",[112,3,2,null,"Hardswish"]],
+       [5,"Conv",[128,1,1,null,1,"ReLU"]],
+       [1,"Conv",[256,1,1]],
+       [1,"GlobalAvgPool",[]],
+       [1,"FixedConv",[9,1,1,null,1,null]]
+     ]
